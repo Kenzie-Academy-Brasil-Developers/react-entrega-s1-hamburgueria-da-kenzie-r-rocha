@@ -2,15 +2,23 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Form input {
+  border-radius: 21px;
+  color: grey;
+  font-size: 21px;
+  margin-top: 10px;
+  margin: 10px 10px;
+}
+
+.Form button {
+  font-size: 17px;
+  margin-bottom: 10px;
 }
 
 .App-header {
@@ -34,5 +42,32 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .App-header {
+    min-height: 100%;
+    min-width: 100%;
+  }
+
+  .Container {
+    display: flex;;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Form input {
+    border-radius: 21px;
+    color: grey;
+    font-size: 27px;
+    margin-top: 10px;
+    padding: 10px 0px;
+  }
+  
+  .Form button {
+    font-size: 17px;
+    margin-bottom: 10px;
   }
 }

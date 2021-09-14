@@ -1,36 +1,85 @@
 import "./App.css";
+
+import hamburguer from "./images/hamburguer.png";
+import xBurguer from "./images/x-burguer.png";
+import xSalada from "./images/x-salada.png";
+import bigKenzie from "./images/big-kenzie.png";
+import guarana from "./images/guarana.png";
+import coca from "./images/coca.png";
+import fanta from "./images/fanta.png";
+
 import { useState } from "react";
 import MenuContainer from "./components/MenuContainer";
 import Product from "./components/Product";
+import Header from "./components/Header/indes";
 
 function App() {
   const [products, setProducts] = useState([
-    { id: 1, name: "Hamburguer", category: "Sanduíches", price: 7.99 },
-    { id: 2, name: "X-Burguer", category: "Sanduíches", price: 8.99 },
-    { id: 3, name: "X-Salada", category: "Sanduíches", price: 10.99 },
-    { id: 4, name: "Big Kenzie", category: "Sanduíches", price: 16.99 },
-    { id: 5, name: "Guaraná", category: "Bebidas", price: 4.99 },
-    { id: 6, name: "Coca", category: "Bebidas", price: 4.99 },
-    { id: 7, name: "Fanta", category: "Bebidas", price: 4.99 },
+    {
+      id: 1,
+      name: "Hamburguer",
+      category: "Sanduíches",
+      price: 7.99,
+      image: hamburguer,
+    },
+    {
+      id: 2,
+      name: "X-Salada",
+      category: "Sanduíches",
+      price: 10.99,
+      image: xSalada,
+    },
+    {
+      id: 3,
+      name: "X-Burguer",
+      category: "Sanduíches",
+      price: 8.99,
+      image: xBurguer,
+    },
+    {
+      id: 4,
+      name: "Big Kenzie",
+      category: "Sanduíches",
+      price: 16.99,
+      image: bigKenzie,
+    },
+    {
+      id: 5,
+      name: "Guaraná",
+      category: "Bebidas",
+      price: 4.99,
+      image: guarana,
+    },
+    { id: 6, 
+      name: "Coca-Cola", 
+      category: "Bebidas", 
+      price: 4.99, 
+      image: coca 
+    },
+    { id: 7, 
+      name: "Fanta", 
+      category: "Bebidas", 
+      price: 4.99, 
+      image: fanta 
+    },
   ]);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [currentSale, setCurrentSale] = useState([]);
 
-  // const [cartTotal, setCartTotal] = useState(0);
-
   const [input, setInput] = useState("");
 
   function showProducts() {
     return (
-      <div>
+      <div className="Form">
         <input
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
         <button
+          className="btn-grad"
           onClick={() => {
             input !== ""
               ? handleClick(input)
@@ -53,7 +102,7 @@ function App() {
     });
 
     itemEncontrado.length > 0
-      ? setFilteredProducts([...filteredProducts, ...itemEncontrado])
+      ? setFilteredProducts([...itemEncontrado])
       : alert("Produto não encontrado");
   }
 
@@ -76,13 +125,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="Empresa">Kenzie Burguer</div>
+        <Header />
 
         <div className="ShowProducts">{showProducts()}</div>
 
         <MenuContainer
           products={products}
           filteredProducts={filteredProducts}
+          setFilteredProducts={setFilteredProducts}
           handleClickId={handleClickId}
         />
 
@@ -101,6 +151,8 @@ function App() {
                 name={elem.name}
                 category={elem.category}
                 price={elem.price}
+                image={elem.image}
+                elem={elem}
               />
             </div>
           ))}

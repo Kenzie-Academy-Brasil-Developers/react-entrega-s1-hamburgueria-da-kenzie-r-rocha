@@ -1,25 +1,30 @@
 import "./style.css";
-// import MenuContainer from "../MenuContainer";
 
-const Product = ({ id, name, category, price, handleClickId }) => {
+const Product = ({ id, name, category, price, image, setFilteredProducts, handleClickId }) => {
+  console.log(image);
+
   return id !== undefined ? (
-    <div className="Card Products">
-      <p className="Name">{name}</p>
-      <p className="Category">Categoria: {category}</p>
-      <p className="Price">Preço: $ {price}</p>
-      <button
+    <div className="card products">
+      <p className="name">{name}</p>
+      <p className="category">Categoria: {category}</p>
+      <p className="price">Preço: $ {price}</p>
+      <div>
+        <img className="photo" src={image} alt={name} />
+      </div>
+      <button className="btn-grad"
         onClick={() => {
           handleClickId(id);
+          setFilteredProducts("");
         }}
       >
         ADICIONAR
       </button>
     </div>
   ) : (
-    <div className="Card">
-      <p className="Name">{name}</p>
-      <p className="Category">Categoria: {category}</p>
-      <p className="Price">Preço: $ {price}</p>
+    <div className="chart">
+      <p className="name">{name}</p>
+      <p className="category">Categoria: {category}</p>
+      <p className="price">Preço: $ {price}</p>
     </div>
   );
 };
